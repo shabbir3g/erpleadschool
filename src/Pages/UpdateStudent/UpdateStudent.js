@@ -17,20 +17,51 @@ const UpdateStudent = () => {
 
     const handleNameChange = e => {
         const updatedName = e.target.value;
-        const updatedUser = { name: updatedName, email: student.email }
-        setStudent(updatedUser);
+        const updatedStudent = { ...student }
+        updatedStudent.fullname = updatedName;
+        console.log(updatedStudent);
+        setStudent(updatedStudent);
+    }
 
+    const handleAgeChange = e => {
+        const updatedAge = e.target.value;
+        const updatedStudent = { ...student }
+        updatedStudent.dataOfBirth = updatedAge;
+        console.log(updatedStudent);
+        setStudent(updatedStudent);
     }
-    const handleEmailChange = e => {
-        const updateEmail = e.target.value;
-        const updatedUser = { name: student.name, email: updateEmail }
-        setStudent(updatedUser);
-        // const updatedUser = {...user }
-        // updatedUser.email = updateEmail;
+    const handleSchoolChange = e => {
+        const updatedSchool = e.target.value;
+        const updatedStudent = { ...student }
+        updatedStudent.school = updatedSchool;
+        console.log(updatedStudent);
+        setStudent(updatedStudent);
     }
+    const handleClassChange = e => {
+        const updatedClass = e.target.value;
+        const updatedStudent = { ...student }
+        updatedStudent.class = updatedClass;
+        console.log(updatedStudent);
+        setStudent(updatedStudent);
+    }
+    const handleDivisionChange = e => {
+        const updatedDivision = e.target.value;
+        const updatedStudent = { ...student }
+        updatedStudent.division = updatedDivision;
+        console.log(updatedStudent);
+        setStudent(updatedStudent);
+    }
+    const handleStatusChange = e => {
+        const updatedStatus = e.target.value;
+        const updatedStudent = { ...student }
+        updatedStudent.status = updatedStatus;
+        console.log(updatedStudent);
+        setStudent(updatedStudent);
+    }
+
 
     const handleUpdateStudent = e => {
-        const url = `http://localhost:5000/student/${id}`;
+        const url = `http://localhost:5000/students/${id}`;
 
         fetch(url, {
             method: 'PUT',
@@ -67,7 +98,7 @@ const UpdateStudent = () => {
                                             Full Name
                                         </Form.Label>
                                         <Col sm="8">
-                                            <Form.Control type="text" value={student.fullname} />
+                                            <Form.Control onChange={handleNameChange} type="text" value={student.fullname} />
                                         </Col>
                                     </Form.Group>
                                     <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
@@ -75,7 +106,7 @@ const UpdateStudent = () => {
                                             Date Of Birth
                                         </Form.Label>
                                         <Col sm="8">
-                                            <Form.Control type="date" value={student.dataOfBirth} />
+                                            <Form.Control onChange={handleAgeChange} type="date" value={student.dataOfBirth} />
                                         </Col>
                                     </Form.Group>
                                     <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
@@ -83,7 +114,7 @@ const UpdateStudent = () => {
                                             School
                                         </Form.Label>
                                         <Col sm="8">
-                                            <Form.Select value={student.school} aria-label="Default select example">
+                                            <Form.Select onChange={handleSchoolChange} value={student.school} aria-label="Default select example">
                                                 <option>Select</option>
                                                 <option value="Pabna University of science and Technology">Pabna University of science and Technology</option>
                                                 <option value="University of south Asia">University of south Asia</option>
@@ -96,7 +127,7 @@ const UpdateStudent = () => {
                                             Class
                                         </Form.Label>
                                         <Col sm="8">
-                                            <Form.Select value={student.class} aria-label="Default select example">
+                                            <Form.Select onChange={handleClassChange} value={student.class} aria-label="Default select example">
                                                 <option>Select</option>
                                                 <option value="01">01</option>
                                                 <option value="02">02</option>
@@ -117,7 +148,7 @@ const UpdateStudent = () => {
                                             Division
                                         </Form.Label>
                                         <Col sm="8">
-                                            <Form.Select value={student.division} aria-label="Default select example">
+                                            <Form.Select onChange={handleDivisionChange} value={student.division} aria-label="Default select example">
                                                 <option>Select</option>
                                                 <option value="A+">A+</option>
                                                 <option value="A">A</option>
@@ -134,12 +165,12 @@ const UpdateStudent = () => {
                                             Status
                                         </Form.Label>
                                         <Col sm="8">
-                                            <input className="form-check-input" type="radio" id="active" name={student.status} value="Active" />
+                                            <input onChange={handleStatusChange} checked={student.status === "Active" ? "checked" : ""} className="form-check-input" type="radio" id="active" name="status" value="Active" />
                                             <label style={{ cursor: 'pointer' }} className="ps-2 form-check-label" htmlFor="active">
                                                 Active
                                             </label>
 
-                                            <input className="ms-4 form-check-input" type="radio" id="inactive" name={student.status} value="Inctive" />
+                                            <input onChange={handleStatusChange} checked={student.status === "Inctive" ? "checked" : ""} className="ms-4 form-check-input" type="radio" id="inactive" name="status" value="Inctive" />
                                             <label style={{ cursor: 'pointer' }} className="ps-2 form-check-label" htmlFor="inactive">
                                                 Inctive
                                             </label>

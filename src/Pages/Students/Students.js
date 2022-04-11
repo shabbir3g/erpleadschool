@@ -49,7 +49,7 @@ const Students = () => {
                     <div className="col-md-10">
                         <div className="row animated fadeInRight">
                             <div className="col-sm-12">
-                                <h4 className="section-subtitle"><b>Searching, ordering and paging</b></h4>
+                                <h4 className="section-subtitle"><b>All Students Data </b></h4>
                                 <div className="panel">
                                     <div className="panel-content">
                                         <div className="table-responsive">
